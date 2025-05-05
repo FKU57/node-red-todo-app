@@ -75,9 +75,53 @@
     {
         "id": "3e527677.c86c1a",
         "type": "cloudantplus",
-        "z": "",
         "host": "http://localhost:5984",
         "name": ""
+    },
+    {
+        "id": "f801b73e.2fa6e8",
+        "type": "cloudantplus in",
+        "z": "19d38fbf.a18f6",
+        "name": "",
+        "cloudant": "3e527677.c86c1a",
+        "database": "todos",
+        "service": "_ext_",
+        "search": "_id_",
+        "design": "",
+        "index": "",
+        "x": 190,
+        "y": 60,
+        "wires": [
+            [
+                "5c3552e3.1c524c"
+            ]
+        ]
+    },
+    {
+        "id": "5c3552e3.1c524c",
+        "type": "subflow:7d26dacc.6bfb94",
+        "z": "19d38fbf.a18f6",
+        "name": "",
+        "env": [],
+        "x": 370,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "55ee4eca.425db",
+        "type": "function",
+        "z": "7d26dacc.6bfb94",
+        "name": "",
+        "func": "msg.payload.url = msg.req.protocol + '://' + msg.req.get('host') + '/todos/' + msg.payload._id\ndelete msg.payload._rev;\ndelete msg.payload._id;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 190,
+        "y": 80,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "9e747482.d4c2a8",
@@ -742,8 +786,7 @@
         "z": "81389382.5c507",
         "name": "",
         "links": [
-            "a9efd584.e6fb78",
-            "d47278f7.4d9738"
+            "a9efd584.e6fb78"
         ],
         "x": 875,
         "y": 680,
@@ -866,39 +909,6 @@
         ]
     },
     {
-        "id": "f801b73e.2fa6e8",
-        "type": "cloudantplus in",
-        "z": "19d38fbf.a18f6",
-        "name": "",
-        "cloudant": "3e527677.c86c1a",
-        "database": "todos",
-        "service": "_ext_",
-        "search": "_id_",
-        "design": "",
-        "index": "",
-        "x": 190,
-        "y": 60,
-        "wires": [
-            [
-                "5c3552e3.1c524c"
-            ]
-        ]
-    },
-    {
-        "id": "55ee4eca.425db",
-        "type": "function",
-        "z": "7d26dacc.6bfb94",
-        "name": "",
-        "func": "msg.payload.url = msg.req.protocol + '://' + msg.req.get('host') + '/todos/' + msg.payload._id\ndelete msg.payload._rev;\ndelete msg.payload._id;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 190,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "776e36f.71b26c8",
         "type": "subflow:19d38fbf.a18f6",
         "z": "81389382.5c507",
@@ -909,18 +919,6 @@
             [
                 "3f6a1d86.f9b892"
             ]
-        ]
-    },
-    {
-        "id": "5c3552e3.1c524c",
-        "type": "subflow:7d26dacc.6bfb94",
-        "z": "19d38fbf.a18f6",
-        "name": "",
-        "env": [],
-        "x": 370,
-        "y": 60,
-        "wires": [
-            []
         ]
     },
     {
